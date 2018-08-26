@@ -72,7 +72,7 @@ CREATE TABLE bitso.trades (
   amount double, 
   rate double, 
   value double, 
-  maker_side_action boolean, 
+  maker_side_action text, 
   maker_order text, 
   taker_order text,
   PRIMARY KEY (id, book, received, arrival)
