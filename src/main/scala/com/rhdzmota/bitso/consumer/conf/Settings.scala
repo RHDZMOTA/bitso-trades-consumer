@@ -45,8 +45,10 @@ object Settings {
 
     object Coins {
       private val coins: Config = bitso.getConfig("coins")
+
       case class BaseCoin(name: String, units: String) {
         private val baseConfig: Config = coins.getConfig(name)
+
         case class UnitsCoin() {
           private val unitsConfig: Config = baseConfig.getConfig(units)
           private val label: String = unitsConfig.getString("label")
@@ -59,17 +61,18 @@ object Settings {
           val diff: String = jsonString
             .replace(Subscription.Json.Replace.`type`, Subscription.Labels.diff)
         }
+
         val exchange: UnitsCoin = UnitsCoin()
       }
 
 
-      val btcmxn: BaseCoin = BaseCoin("btc", "mxn")
       val btcmxn: BaseCoin = BaseCoin("btc", "mxn")
       val ethmxn: BaseCoin = BaseCoin("eth", "mxn")
       val xrpmxn: BaseCoin = BaseCoin("xrp", "mxn")
       val ltcmxn: BaseCoin = BaseCoin("ltc", "mxn")
       val bchmxn: BaseCoin = BaseCoin("bch", "mxn")
       val tusdmxn: BaseCoin = BaseCoin("tusd", "mxn")
+    }
 
   }
 }

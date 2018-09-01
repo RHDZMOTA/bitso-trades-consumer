@@ -15,11 +15,11 @@ case object Bitso extends Context {
 
   val tradesSource: Source[Message, Promise[Option[Message]]] = Source(List(
     TextMessage(Settings.Bitso.Coins.btcmxn.exchange.trades),
-    TextMessage(Settings.Bitso.Coins.Eth.Mxn.trades),
-    TextMessage(Settings.Bitso.Coins.Xrp.Mxn.trades),
-    TextMessage(Settings.Bitso.Coins.Ltc.Mxn.trades),
-    TextMessage(Settings.Bitso.Coins.Bch.Mxn.trades),
-    TextMessage(Settings.Bitso.Coins.Tusd.Mxn.trades),
+    TextMessage(Settings.Bitso.Coins.ethmxn.exchange.trades),
+    TextMessage(Settings.Bitso.Coins.xrpmxn.exchange.trades),
+    TextMessage(Settings.Bitso.Coins.ltcmxn.exchange.trades),
+    TextMessage(Settings.Bitso.Coins.bchmxn.exchange.trades),
+    TextMessage(Settings.Bitso.Coins.tusdmxn.exchange.trades),
   )).concatMat(Source.maybe[Message])(Keep.right)
 
   def tradesSink(databaseSink: Sink[TradeRow, Future[Done]]): Sink[Message, Future[Done]] =
