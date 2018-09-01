@@ -64,99 +64,12 @@ object Settings {
 
 
       val btcmxn: BaseCoin = BaseCoin("btc", "mxn")
-
-      object Btc {
-        private val btc: Config = coins.getConfig("btc")
-        object Mxn {
-          private val mxn: Config = btc.getConfig("mxn")
-          private val label: String = mxn.getString("label")
-          private val jsonString: String = Subscription.Json.string
-            .replace(Subscription.Json.Replace.book, label)
-          val orders: String = jsonString
-            .replace(Subscription.Json.Replace.`type`, Subscription.Labels.orders)
-          val trades: String = jsonString
-            .replace(Subscription.Json.Replace.`type`, Subscription.Labels.trades)
-          val diff: String = jsonString
-            .replace(Subscription.Json.Replace.`type`, Subscription.Labels.diff)
-        }
-      }
-      object Eth {
-        private val eth: Config = coins.getConfig("eth")
-        object Mxn {
-          private val mxn: Config = eth.getConfig("mxn")
-          private val label: String = mxn.getString("label")
-          private val jsonString: String = Subscription.Json.string
-            .replace(Subscription.Json.Replace.book, label)
-          val orders: String = jsonString
-            .replace(Subscription.Json.Replace.`type`, Subscription.Labels.orders)
-          val trades: String = jsonString
-            .replace(Subscription.Json.Replace.`type`, Subscription.Labels.trades)
-          val diff: String = jsonString
-            .replace(Subscription.Json.Replace.`type`, Subscription.Labels.diff)
-        }
-      }
-      object Xrp {
-        private val xrp: Config = coins.getConfig("xrp")
-        object Mxn {
-          private val mxn: Config = xrp.getConfig("mxn")
-          private val label: String = mxn.getString("label")
-          private val jsonString: String = Subscription.Json.string
-            .replace(Subscription.Json.Replace.book, label)
-          val orders: String = jsonString
-            .replace(Subscription.Json.Replace.`type`, Subscription.Labels.orders)
-          val trades: String = jsonString
-            .replace(Subscription.Json.Replace.`type`, Subscription.Labels.trades)
-          val diff: String = jsonString
-            .replace(Subscription.Json.Replace.`type`, Subscription.Labels.diff)
-        }
-      }
-      object Ltc {
-        private val ltc: Config = coins.getConfig("ltc")
-        object Mxn {
-          private val mxn: Config = ltc.getConfig("mxn")
-          private val label: String = mxn.getString("label")
-          private val jsonString: String = Subscription.Json.string
-            .replace(Subscription.Json.Replace.book, label)
-          val orders: String = jsonString
-            .replace(Subscription.Json.Replace.`type`, Subscription.Labels.orders)
-          val trades: String = jsonString
-            .replace(Subscription.Json.Replace.`type`, Subscription.Labels.trades)
-          val diff: String = jsonString
-            .replace(Subscription.Json.Replace.`type`, Subscription.Labels.diff)
-        }
-      }
-      object Bch {
-        private val bch: Config = coins.getConfig("bch")
-        object Mxn {
-          private val mxn: Config = bch.getConfig("mxn")
-          private val label: String = mxn.getString("label")
-          private val jsonString: String = Subscription.Json.string
-            .replace(Subscription.Json.Replace.book, label)
-          val orders: String = jsonString
-            .replace(Subscription.Json.Replace.`type`, Subscription.Labels.orders)
-          val trades: String = jsonString
-            .replace(Subscription.Json.Replace.`type`, Subscription.Labels.trades)
-          val diff: String = jsonString
-            .replace(Subscription.Json.Replace.`type`, Subscription.Labels.diff)
-        }
-      }
-      object Tusd {
-        private val tusd: Config = coins.getConfig("tusd")
-        object Mxn {
-          private val mxn: Config = tusd.getConfig("mxn")
-          private val label: String = mxn.getString("label")
-          private val jsonString: String = Subscription.Json.string
-            .replace(Subscription.Json.Replace.book, label)
-          val orders: String = jsonString
-            .replace(Subscription.Json.Replace.`type`, Subscription.Labels.orders)
-          val trades: String = jsonString
-            .replace(Subscription.Json.Replace.`type`, Subscription.Labels.trades)
-          val diff: String = jsonString
-            .replace(Subscription.Json.Replace.`type`, Subscription.Labels.diff)
-        }
-      }
-    }
-
+      val btcmxn: BaseCoin = BaseCoin("btc", "mxn")
+      val ethmxn: BaseCoin = BaseCoin("eth", "mxn")
+      val xrpmxn: BaseCoin = BaseCoin("xrp", "mxn")
+      val ltcmxn: BaseCoin = BaseCoin("ltc", "mxn")
+      val bchmxn: BaseCoin = BaseCoin("bch", "mxn")
+      val tusdmxn: BaseCoin = BaseCoin("tusd", "mxn")
 
   }
 }

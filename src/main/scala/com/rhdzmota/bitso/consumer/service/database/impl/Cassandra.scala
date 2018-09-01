@@ -3,8 +3,8 @@ package com.rhdzmota.bitso.consumer.service.database.impl
 import com.rhdzmota.bitso.consumer.model.trades.TradeRow
 import com.rhdzmota.bitso.consumer.service.database.Database
 import akka.stream.alpakka.cassandra.scaladsl.CassandraSink
-import akka.stream.scaladsl.{Flow, Sink}
-import akka.{Done, NotUsed}
+import akka.stream.scaladsl.{Flow, Keep, Sink}
+import akka.Done
 import com.datastax.driver.core.{BoundStatement, Cluster, PreparedStatement, Session}
 import com.rhdzmota.bitso.consumer.conf.{Context, Settings}
 
@@ -47,6 +47,6 @@ case object Cassandra extends Database with Context {
     statementBinder
   )
 
-  override def sink: Sink[TradeRow, NotUsed] = Flow[TradeRow].to(cassandraSink)
+  override def sink: Sink[TradeRow, Future[Done]] = Flow[TradeRow].toMat(cassandraSink)(Keep.right)
 
 }

@@ -2,8 +2,10 @@ package com.rhdzmota.bitso.consumer.model.trades
 
 import java.sql.Timestamp
 import java.time.LocalDateTime
-import io.circe.parser.decode
+
 import com.rhdzmota.bitso.consumer.model.implicits.Decoders
+import io.circe.parser.decode
+
 import scala.util.Try
 
 sealed trait Trade
@@ -29,11 +31,11 @@ case object Trades {
   import Decoders._
   object Errors {
     sealed trait TradeError
-    final case class CirceError(e: io.circe.Error) extends TradeError
+    final case class CirceError(e: io.circe.Error, string: String) extends TradeError
     case object NotTextMessage extends TradeError
   }
   def fromString(string: String): Either[Errors.TradeError, Trades] = decode[Trades](string) match {
-    case Left(e)      => Left(Errors.CirceError(e))
+    case Left(e)      => Left(Errors.CirceError(e, string))
     case Right(value) => Right(value)
   }
 }
